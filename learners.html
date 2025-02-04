@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alaskena School - Learners Section</title>
+  <style>
+    /* Add previous CSS here */
+
+    .resources a {
+      display: block;
+      background-color: #3498db;
+      color: white;
+      text-decoration: none;
+      padding: 15px;
+      margin-bottom: 15px;
+      border-radius: 6px;
+      text-align: center;
+      font-size: 1.2em;
+      transition: background-color 0.3s ease;
+    }
+
+    .resources a:hover {
+      background-color: #2980b9;
+    }
+
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      padding-top: 60px;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.4);
+    }
+
+    .modal-content {
+      background-color: #fefefe;
+      margin: 5% auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%;
+      max-width: 500px;
+      border-radius: 8px;
+    }
+
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .calendar {
+      width: 100%;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <h3>Learner Resources</h3>
+    <ul>
+      <li><a href="#study-materials">Study Materials</a></li>
+      <li><a href="#assignments">Assignments</a></li>
+      <li><a href="#grades">Grade Reports</a></li>
+      <li><a href="#announcements">Announcements</a></li>
+      <li><a href="#clubs">Clubs & Extracurriculars</a></li>
+    </ul>
+  </div>
+
+  <!-- Main Content Area -->
+  <div class="content">
+    <h1>Welcome to the Learners Section!</h1>
+
+    <!-- Study Materials Section -->
+    <section id="study-materials">
+      <h2>Study Materials</h2>
+      <p>Access various study resources, including lecture notes, textbooks, past papers, and more to help you with your studies.</p>
+      <div class="resources">
+        <a href="#">View Study Materials</a>
+        <a href="#">Download Study Guides</a>
+      </div>
+    </section>
+
+    <!-- Assignments Section -->
+    <section id="assignments">
+      <h2>Assignments</h2>
+      <p>Keep track of your assignments, deadlines, and submissions. View ongoing assignments and submit your work directly.</p>
+      <div class="resources">
+        <a href="#">View Assignments</a>
+        <a href="#">Submit Assignment</a>
+      </div>
+    </section>
+
+    <!-- Grades Section -->
+    <section id="grades">
+      <h2>Grade Reports</h2>
+      <p>View your grade reports and progress. Access individual subject grades and track your performance over time.</p>
+      <div class="resources">
+        <a href="#">View My Grades</a>
+        <a href="#">Download Grade Report</a>
+      </div>
+    </section>
+
+    <!-- Announcements Section -->
+    <section id="announcements">
+      <h2>School Announcements</h2>
+      <p>Stay informed with the latest school announcements, news, and important updates. Keep track of school activities and events.</p>
+      <div class="resources">
+        <a href="#">View Announcements</a>
+        <a href="#">Download Announcement PDF</a>
+      </div>
+    </section>
+
+    <!-- Clubs & Extracurriculars Section -->
+    <section id="clubs">
+      <h2>Clubs & Extracurriculars</h2>
+      <p>Get involved in school clubs, sports teams, and other extracurricular activities. Find more information about how to join and participate.</p>
+      <div class="resources">
+        <a href="#">Explore Clubs</a>
+        <a href="#">Join an Extracurricular Activity</a>
+      </div>
+    </section>
+
+    <!-- Modal for submitting assignments (Optional) -->
+    <div id="submitAssignmentModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Submit Assignment</h2>
+        <form id="assignmentForm">
+          <textarea id="assignmentContent" rows="4" cols="50" placeholder="Enter your assignment details here..." required></textarea><br>
+          <button type="submit">Submit Assignment</button>
+        </form>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 Alaskena School | Empowering Learners for a Brighter Future</p>
+  </footer>
+
+  <!-- JS for Modal -->
+  <script>
+    // Open submit assignment modal
+    const submitAssignmentBtn = document.getElementById("submitAssignmentBtn");
+    const submitAssignmentModal = document.getElementById("submitAssignmentModal");
+    const closeModal = document.querySelector(".close");
+
+    submitAssignmentBtn.addEventListener("click", () => {
+      submitAssignmentModal.style.display = "block";
+    });
+
+    closeModal.addEventListener("click", () => {
+      submitAssignmentModal.style.display = "none";
+    });
+
+    window.addEventListener("click", (event) => {
+      if (event.target === submitAssignmentModal) {
+        submitAssignmentModal.style.display = "none";
+      }
+    });
+
+    // Handle form submission for assignments
+    const assignmentForm = document.getElementById("assignmentForm");
+
+    assignmentForm.addEventListener("submit", (event) => {
+      event.preventDefault(); // Prevent form from refreshing the page
+      const assignmentContent = document.getElementById("assignmentContent").value;
+
+      // For now, just show an alert (in real use, you'd send this to your server)
+      alert("Your assignment has been submitted: " + assignmentContent);
+      submitAssignmentModal.style.display = "none";
+    });
+  </script>
+
+</body>
+</html>

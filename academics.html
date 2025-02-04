@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alaskena School - Academics</title>
+  <style>
+    /* Add previous CSS here */
+
+    .resources a {
+      display: block;
+      background-color: #2980b9;
+      color: white;
+      text-decoration: none;
+      padding: 15px;
+      margin-bottom: 15px;
+      border-radius: 6px;
+      text-align: center;
+      font-size: 1.2em;
+      transition: background-color 0.3s ease;
+    }
+
+    .resources a:hover {
+      background-color: #3498db;
+    }
+
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      padding-top: 60px;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.4);
+    }
+
+    .modal-content {
+      background-color: #fefefe;
+      margin: 5% auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%;
+      max-width: 500px;
+      border-radius: 8px;
+    }
+
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    /* Calendar Styles */
+    .calendar {
+      width: 100%;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <h3>Academic Resources</h3>
+    <ul>
+      <li><a href="#curriculum">Curriculum Overview</a></li>
+      <li><a href="#lesson-plans">Lesson Plans</a></li>
+      <li><a href="#assessment">Assessments</a></li>
+      <li><a href="#reports">Academic Reports</a></li>
+      <li><a href="#research">Research Resources</a></li>
+      <li><a href="#events">School Events</a></li>
+    </ul>
+  </div>
+
+  <!-- Main Content Area -->
+  <div class="content">
+    <h1>Welcome to the Academics Section!</h1>
+
+    <!-- Curriculum Overview Section -->
+    <section id="curriculum">
+      <h2>Curriculum Overview</h2>
+      <p>Access the complete curriculum guide to ensure you're on track with the educational objectives. Review the course outlines for all subjects offered.</p>
+      <div class="resources">
+        <a href="#">View Curriculum Overview</a>
+        <a href="#">Update Curriculum</a>
+      </div>
+    </section>
+
+    <!-- Lesson Plans Section -->
+    <section id="lesson-plans">
+      <h2>Lesson Plans</h2>
+      <p>Download and upload lesson plans that align with our curriculum. Collaborate with fellow educators to ensure students have access to high-quality lessons.</p>
+      <div class="resources">
+        <a href="#">View Lesson Plans</a>
+        <a href="#">Upload New Lesson Plan</a>
+      </div>
+    </section>
+
+    <!-- Assessment Section -->
+    <section id="assessment">
+      <h2>Assessments</h2>
+      <p>Access a variety of assessment tools to evaluate student progress, including quizzes, tests, and assignments. Track their learning journey and provide feedback.</p>
+      <div class="resources">
+        <a href="#">View Assessment Tools</a>
+        <a href="#">Create New Assessment</a>
+      </div>
+    </section>
+
+    <!-- Academic Reports Section -->
+    <section id="reports">
+      <h2>Academic Reports</h2>
+      <p>View reports for students' academic progress, exam results, and overall performance. Generate academic summaries for parents and the administration.</p>
+      <div class="resources">
+        <a href="#">View Academic Reports</a>
+        <a href="#">Generate New Report</a>
+      </div>
+    </section>
+
+    <!-- Research Resources Section -->
+    <section id="research">
+      <h2>Research Resources</h2>
+      <p>Access a collection of academic papers, research materials, and publications relevant to the school curriculum and professional development.</p>
+      <div class="resources">
+        <a href="#">View Research Papers</a>
+        <a href="#">Submit New Research</a>
+      </div>
+    </section>
+
+    <!-- School Events Section -->
+    <section id="events">
+      <h2>Upcoming School Events</h2>
+      <p>Stay updated on upcoming school events, academic conferences, faculty meetings, and student exhibitions. Participate and contribute to the academic community.</p>
+      <div class="resources">
+        <a href="#">View Events Calendar</a>
+        <a href="#">RSVP for Events</a>
+      </div>
+    </section>
+
+    <!-- Modal for creating reports (Optional) -->
+    <div id="createReportModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Create New Report</h2>
+        <form id="reportForm">
+          <textarea id="reportContent" rows="4" cols="50" placeholder="Enter report details here..." required></textarea><br>
+          <button type="submit">Generate Report</button>
+        </form>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 Alaskena School | Empowering Academics, Inspiring Students</p>
+  </footer>
+
+  <!-- JS for Modal and Calendar -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.2.0/fullcalendar.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.2.0/fullcalendar.min.css"/>
+
+  <script>
+    // Open create report modal
+    const createReportBtn = document.getElementById("createReportBtn");
+    const createReportModal = document.getElementById("createReportModal");
+    const closeModal = document.querySelector(".close");
+
+    createReportBtn.addEventListener("click", () => {
+      createReportModal.style.display = "block";
+    });
+
+    closeModal.addEventListener("click", () => {
+      createReportModal.style.display = "none";
+    });
+
+    window.addEventListener("click", (event) => {
+      if (event.target === createReportModal) {
+        createReportModal.style.display = "none";
+      }
+    });
+
+    // Handle form submission for report creation
+    const reportForm = document.getElementById("reportForm");
+
+    reportForm.addEventListener("submit", (event) => {
+      event.preventDefault(); // Prevent form from refreshing the page
+      const reportContent = document.getElementById("reportContent").value;
+
+      // For now, just show an alert (in real use, you'd send this to your server)
+      alert("Your report has been generated: " + reportContent);
+      createReportModal.style.display = "none";
+    });
+
+    // Initialize FullCalendar for events
+    document.addEventListener('DOMContentLoaded', function() {
+      const calendarContainer = document.getElementById('calendar-container');
+
+      // Initialize a simple calendar
+      $('#calendar-container').fullCalendar({
+        events: [
+          { title: 'Teacher Training', start: '2025-03-12', description: 'Professional development for teachers.' },
+          { title: 'Academic Conference', start: '2025-03-25', description: 'School-wide academic conference for educators.' },
+        ],
+        eventClick: function(event) {
+          alert('Event: ' + event.title + '\n' + event.description);
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>

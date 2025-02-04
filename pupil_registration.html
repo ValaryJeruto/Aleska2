@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pupil Registration Form</title>
+    <style>
+        /* Reset default browser styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body styling */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+
+        /* Center the registration container */
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 30px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Title styling */
+        h2 {
+            text-align: center;
+            color: #4CAF50;
+            margin-bottom: 30px;
+        }
+
+        /* Form layout */
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        /* Input and select field styling */
+        input, select, textarea {
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        /* Textarea specific */
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        /* Button styling */
+        button {
+            padding: 12px 20px;
+            background-color: #4CAF50;
+            color: white;
+            font-size: 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        /* Button hover effect */
+        button:hover {
+            background-color: #45a049;
+        }
+
+        /* Label styling */
+        label {
+            font-weight: bold;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        /* Avatar section */
+        .avatar-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .avatar-container input[type="file"] {
+            margin-top: 10px;
+            display: none; /* Hide the file input */
+        }
+
+        .avatar-container img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #ddd;
+            margin-bottom: 10px;
+            cursor: pointer; /* Make avatar clickable */
+        }
+
+        /* Form section spacing */
+        .form-section {
+            margin-bottom: 20px;
+        }
+
+        /* Responsive styling */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+
+            form {
+                gap: 15px;
+            }
+
+            button {
+                font-size: 14px;
+                padding: 10px 18px;
+            }
+
+            label, input, select, textarea {
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .avatar-container img {
+                width: 80px;
+                height: 80px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Pupil Registration Form</h2>
+
+        <!-- Pupil Registration Form -->
+        <form action="register.php" method="POST" enctype="multipart/form-data">
+            <div class="form-section">
+                <!-- Avatar Upload Section -->
+                <div class="avatar-container">
+                    <label for="avatar"> (Pupil Photo):</label>
+                    <img id="avatarPreview" src="avatar.png" alt="Avatar Preview" onclick="document.getElementById('avatar').click()">
+                    <input type="file" id="avatar" name="avatar" accept="image/*" onchange="previewAvatar()" required>
+                </div>
+
+                <label for="adm_no">Admission Number:</label>
+                <input type="text" id="adm_no" name="adm_no" required placeholder="Enter admission number">
+
+                <label for="full_name_pupil">Full Name:</label>
+                <input type="text" id="full_name_pupil" name="full_name_pupil" required placeholder="Enter full name">
+
+                <label for="date_of_birth">Date of Birth:</label>
+                <input type="date" id="date_of_birth" name="date_of_birth" required>
+
+                <label for="gender">Gender:</label>
+                <select id="gender" name="gender" required>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                </select>
+
+                <label for="address">Address:</label>
+                <textarea id="address" name="address" rows="4" required placeholder="Enter address"></textarea>
+
+                <label for="admission_date">Admission Date:</label>
+                <input type="date" id="admission_date" name="admission_date" required>
+
+                <label for="grade_level">Grade Level:</label>
+                <select id="grade_level" name="grade_level" required>
+                    <option value="Grade 1">Grade 1</option>
+                    <option value="Grade 2">Grade 2</option>
+                    <option value="Grade 3">Grade 3</option>
+                    <option value="Grade 4">Grade 4</option>
+                    <option value="Grade 5">Grade 5</option>
+                    <option value="Grade 6">Grade 6</option>
+                    <option value="Grade 7">Grade 7</option>
+                    <option value="Grade 8">Grade 8</option>
+                    <option value="Grade 9">Grade 9</option>
+                </select>
+
+                <button type="submit" name="register_pupil">Register Pupil</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        // Function to preview the uploaded avatar
+        function previewAvatar() {
+            const file = document.getElementById("avatar").files[0];
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                document.getElementById("avatarPreview").src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+    </script>
+
+</body>
+</html>

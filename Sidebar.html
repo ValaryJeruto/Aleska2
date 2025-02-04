@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alaskena School</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            flex-direction: column;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 26px;
+            font-weight: bold;
+        }
+        .container {
+            display: flex;
+            min-height: 100vh;
+        }
+        .sidebar {
+            width: 250px;
+            background: #2c3e50;
+            color: white;
+            padding-top: 20px;
+            position: fixed;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            overflow-y: auto;
+            transition: transform 0.3s ease-in-out;
+        }
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+        .sidebar ul li {
+            padding: 15px;
+            text-align: center;
+            font-weight: bold;
+        }
+        .sidebar ul li a {
+            text-decoration: none;
+            color: white;
+            display: block;
+            transition: background 0.3s, padding-left 0.3s;
+        }
+        .sidebar ul li a:hover, .sidebar ul li a.active {
+            background: #27ae60;
+            padding-left: 10px;
+            border-radius: 5px;
+        }
+        .main-content {
+            margin-left: 270px;
+            flex: 1;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: margin-left 0.3s ease-in-out;
+        }
+        footer {
+            text-align: center;
+            padding: 12px;
+            background: #333;
+            color: white;
+            margin-top: 20px;
+            font-size: 14px;
+        }
+        @media screen and (max-width: 768px) {
+            .sidebar {
+                transform: translateX(-100%);
+            }
+            .main-content {
+                margin-left: 0;
+            }
+            .toggle-btn {
+                position: fixed;
+                top: 15px;
+                left: 15px;
+                background: #27ae60;
+                color: white;
+                padding: 10px;
+                border: none;
+                cursor: pointer;
+                z-index: 1000;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Alaskena School</h1>
+        <p>Education for Excellence and Empowerment</p>
+    </header>
+    <button class="toggle-btn" onclick="toggleSidebar()">☰</button>
+    <div class="container">
+        <div class="sidebar">
+            <ul>
+                <li><a href="#" class="active">Default</a></li>
+                <li><a href="parents.html">Parents</a></li>
+                <li><a href="teachers.html">Teachers</a></li>
+                <li><a href="students.html">Students</a></li>
+                <li><a href="financials.html">Financials</a></li>
+                <li><a href="academics.html">Academics</a></li>
+                <li><a href="sports.html">Sports</a></li>
+            </ul>
+        </div>
+        <div class="main-content">
+            <h2>Welcome to Alaskena School</h2>
+            <p>At Alaskena, we strive to provide quality education and empower the next generation of leaders.</p>
+        </div>
+    </div>
+    <footer>
+        <p>© 2025 Alaskena School | Designed with ❤️ for the community</p>
+    </footer>
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.querySelector('.sidebar');
+            sidebar.style.transform = (sidebar.style.transform === 'translateX(0px)') ? 'translateX(-100%)' : 'translateX(0px)';
+        }
+    </script>
+</body>
+</html>

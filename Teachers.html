@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alaskena School - Teachers</title>
+  <style>
+    /* Add previous CSS here */
+
+    .resources a {
+      display: block;
+      background-color: #2980b9;
+      color: white;
+      text-decoration: none;
+      padding: 15px;
+      margin-bottom: 15px;
+      border-radius: 6px;
+      text-align: center;
+      font-size: 1.2em;
+      transition: background-color 0.3s ease;
+    }
+
+    .resources a:hover {
+      background-color: #3498db;
+    }
+
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      padding-top: 60px;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.4);
+    }
+
+    .modal-content {
+      background-color: #fefefe;
+      margin: 5% auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%;
+      max-width: 500px;
+      border-radius: 8px;
+    }
+
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    /* Calendar Styles */
+    .calendar {
+      width: 100%;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <h3>Teacher Resources</h3>
+    <ul>
+      <li><a href="#schedule">Class Schedule</a></li>
+      <li><a href="#materials">Teaching Materials</a></li>
+      <li><a href="#attendance">Attendance Tracker</a></li>
+      <li><a href="#grading">Grading & Reports</a></li>
+      <li><a href="#communication">Communication with Parents</a></li>
+      <li><a href="#events">School Events</a></li>
+    </ul>
+  </div>
+
+  <!-- Main Content Area -->
+  <div class="content">
+    <h1>Welcome Teachers!</h1>
+
+    <!-- Class Schedule Section -->
+    <section id="schedule">
+      <h2>Class Schedule</h2>
+      <p>Access your class schedule and stay up-to-date with your teaching responsibilities. You can view your daily classes and upcoming lessons.</p>
+      <div class="resources">
+        <a href="#">View Class Schedule</a>
+        <a href="#">Update Class Schedule</a>
+      </div>
+    </section>
+
+    <!-- Teaching Materials Section -->
+    <section id="materials">
+      <h2>Teaching Materials</h2>
+      <p>Download lesson plans, presentations, worksheets, and other teaching materials provided by the school. Share and update materials with your students.</p>
+      <div class="resources">
+        <a href="#">View Teaching Materials</a>
+        <a href="#">Upload New Materials</a>
+      </div>
+    </section>
+
+    <!-- Attendance Section -->
+    <section id="attendance">
+      <h2>Attendance Tracker</h2>
+      <p>Track your students' attendance daily. Easily mark absences and view reports on attendance trends.</p>
+      <div class="resources">
+        <a href="#">Mark Student Attendance</a>
+        <a href="#">View Attendance Reports</a>
+      </div>
+    </section>
+
+    <!-- Grading Section -->
+    <section id="grading">
+      <h2>Grading & Reports</h2>
+      <p>Grade student assignments, quizzes, and exams. Review grade reports and communicate student performance with parents.</p>
+      <div class="resources">
+        <a href="#">Grade Student Assignments</a>
+        <a href="#">View Grade Reports</a>
+      </div>
+    </section>
+
+    <!-- Communication Section -->
+    <section id="communication">
+      <h2>Communication with Parents</h2>
+      <p>Communicate directly with parents to discuss students' progress, behavior, and attendance. Stay in touch to ensure the best learning experience.</p>
+      <div class="resources">
+        <a href="#">Send Message to Parents</a>
+        <a href="#">View Parent Messages</a>
+      </div>
+    </section>
+
+    <!-- School Events Section -->
+    <section id="events">
+      <h2>Upcoming School Events</h2>
+      <p>Stay updated on upcoming school events, faculty meetings, and extracurricular activities. Participate and stay engaged with the school community.</p>
+      <div class="resources">
+        <a href="#">View Events Calendar</a>
+        <a href="#">RSVP for Events</a>
+      </div>
+    </section>
+
+    <!-- Modal for sending message (Optional) -->
+    <div id="sendMessageModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Send Message to Parent</h2>
+        <form id="messageForm">
+          <textarea id="message" rows="4" cols="50" placeholder="Type your message here..." required></textarea><br>
+          <button type="submit">Send Message</button>
+        </form>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 Alaskena School | Empowering Teachers, Inspiring Students</p>
+  </footer>
+
+  <!-- JS for Modal and Calendar -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.2.0/fullcalendar.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.2.0/fullcalendar.min.css"/>
+
+  <script>
+    // Open message modal
+    const sendMessageBtn = document.getElementById("sendMessageBtn");
+    const sendMessageModal = document.getElementById("sendMessageModal");
+    const closeModal = document.querySelector(".close");
+
+    sendMessageBtn.addEventListener("click", () => {
+      sendMessageModal.style.display = "block";
+    });
+
+    closeModal.addEventListener("click", () => {
+      sendMessageModal.style.display = "none";
+    });
+
+    window.addEventListener("click", (event) => {
+      if (event.target === sendMessageModal) {
+        sendMessageModal.style.display = "none";
+      }
+    });
+
+    // Handle form submission
+    const messageForm = document.getElementById("messageForm");
+
+    messageForm.addEventListener("submit", (event) => {
+      event.preventDefault(); // Prevent form from refreshing the page
+      const messageContent = document.getElementById("message").value;
+
+      // For now, just show an alert (in real use, you'd send this to your server)
+      alert("Your message has been sent: " + messageContent);
+      sendMessageModal.style.display = "none";
+    });
+
+    // Initialize FullCalendar for events
+    document.addEventListener('DOMContentLoaded', function() {
+      const calendarContainer = document.getElementById('calendar-container');
+
+      // Initialize a simple calendar
+      $('#calendar-container').fullCalendar({
+        events: [
+          { title: 'Teacher Training', start: '2025-03-12', description: 'Professional development for teachers.' },
+          { title: 'Faculty Meeting', start: '2025-03-18', description: 'Monthly faculty meeting for all staff.' },
+        ],
+        eventClick: function(event) {
+          alert('Event: ' + event.title + '\n' + event.description);
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alaskena School - Parent Portal</title>
+  <style>
+    /* Global Styles */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f3f5f8;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    /* Sidebar Styles */
+    .sidebar {
+      width: 250px;
+      height: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background-color: #2b3e50;
+      color: white;
+      padding-top: 20px;
+      box-shadow: 4px 0 20px rgba(0, 0, 0, 0.1);
+      z-index: 999;
+      transition: transform 0.3s ease;
+    }
+
+    .sidebar h3 {
+      font-size: 1.4em;
+      text-align: center;
+      color: #ecf0f1;
+      margin-bottom: 25px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-weight: bold;
+    }
+
+    .sidebar ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .sidebar a {
+      display: block;
+      color: #ecf0f1;
+      text-decoration: none;
+      padding: 12px 20px;
+      font-size: 1.1em;
+      text-align: left;
+      border-bottom: 1px solid #34495e;
+      transition: background-color 0.3s ease;
+    }
+
+    .sidebar a:hover {
+      background-color: #1abc9c;
+    }
+
+    /* Content Styles */
+    .content {
+      margin-left: 250px;
+      padding: 40px;
+      background-color: #fff;
+      min-height: 100vh;
+    }
+
+    h1 {
+      font-size: 2.5em;
+      color: #2c3e50;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    section {
+      background-color: #ffffff;
+      padding: 25px;
+      margin-top: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    section h2 {
+      font-size: 2em;
+      color: #2c3e50;
+      margin-bottom: 15px;
+      font-weight: bold;
+    }
+
+    section p {
+      font-size: 1.1em;
+      color: #7f8c8d;
+      line-height: 1.8;
+    }
+
+    /* Resource Buttons */
+    .resources a {
+      display: block;
+      background-color: #3498db;
+      color: white;
+      text-decoration: none;
+      padding: 16px;
+      margin-bottom: 15px;
+      border-radius: 6px;
+      text-align: center;
+      font-size: 1.2em;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .resources a:hover {
+      background-color: #2980b9;
+      transform: translateY(-2px);
+    }
+
+    /* Footer Styles */
+    footer {
+      background-color: #2b3e50;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      position: relative;
+      bottom: 0;
+      width: 100%;
+      box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    footer p {
+      margin: 0;
+      font-size: 1em;
+    }
+
+    /* Responsive Styles */
+    @media screen and (max-width: 768px) {
+      .sidebar {
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: -100%;
+        transform: translateX(0);
+        transition: transform 0.3s ease;
+      }
+
+      .sidebar.open {
+        left: 0;
+        transform: translateX(100%);
+      }
+
+      .content {
+        margin-left: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <div class="sidebar" id="sidebar">
+    <h3>Parent Portal</h3>
+    <ul>
+      <li><a href="#communication">Communication</a></li>
+      <li><a href="#events">School Events</a></li>
+      <li><a href="#academic">Academic Updates</a></li>
+      <li><a href="#attendance">Attendance Tracker</a></li>
+      <li><a href="#grades">Grades & Reports</a></li>
+      <li><a href="#parent-teacher">Parent-Teacher Interaction</a></li>
+    </ul>
+  </div>
+
+  <!-- Main Content Area -->
+  <div class="content">
+    <h1>Welcome to the Parent Portal</h1>
+
+    <!-- Communication Section -->
+    <section id="communication">
+      <h2>Communication with Teachers</h2>
+      <p>Stay informed with real-time updates and easily communicate with your child’s teachers through our online messaging system.</p>
+      <div class="resources">
+        <a href="#">View Messages</a>
+        <a href="#">Send a Message</a>
+      </div>
+    </section>
+
+    <!-- School Events Section -->
+    <section id="events">
+      <h2>Upcoming School Events</h2>
+      <p>Stay updated on school events, parent-teacher meetings, and school-wide activities that encourage community involvement.</p>
+      <div class="resources">
+        <a href="#">View Events Calendar</a>
+        <a href="#">RSVP for an Event</a>
+      </div>
+    </section>
+
+    <!-- Academic Updates Section -->
+    <section id="academic">
+      <h2>Academic Updates</h2>
+      <p>Monitor your child’s academic performance and stay up-to-date with assignments, grades, and other important school updates.</p>
+      <div class="resources">
+        <a href="#">View Academic Progress</a>
+        <a href="#">View Homework Assignments</a>
+      </div>
+    </section>
+
+    <!-- Attendance Section -->
+    <section id="attendance">
+      <h2>Attendance Tracker</h2>
+      <p>Ensure your child’s regular attendance by viewing detailed attendance records and tracking any absences.</p>
+      <div class="resources">
+        <a href="#">View Attendance</a>
+        <a href="#">Report Absence</a>
+      </div>
+    </section>
+
+    <!-- Grades & Reports Section -->
+    <section id="grades">
+      <h2>Grades & Reports</h2>
+      <p>Access your child’s grades, report cards, and transcripts to track their academic progress throughout the year.</p>
+      <div class="resources">
+        <a href="#">View Report Cards</a>
+        <a href="#">Download Transcripts</a>
+      </div>
+    </section>
+
+    <!-- Parent-Teacher Interaction Section -->
+    <section id="parent-teacher">
+      <h2>Parent-Teacher Interaction</h2>
+      <p>Schedule parent-teacher meetings and collaborate with educators to support your child’s educational journey.</p>
+      <div class="resources">
+        <a href="#">Schedule a Meeting</a>
+        <a href="#">View Teacher Profiles</a>
+      </div>
+    </section>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 Alaskena School | Empowering Parents, Supporting Students</p>
+  </footer>
+
+  <!-- Sidebar Toggle Script (Optional for Mobile) -->
+  <script>
+    function toggleSidebar() {
+      const sidebar = document.getElementById("sidebar");
+      sidebar.classList.toggle("open");
+    }
+  </script>
+
+</body>
+</html>

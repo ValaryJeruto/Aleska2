@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alaskena School - Games & Sports</title>
+  <style>
+    /* Add previous CSS here */
+
+    .resources a {
+      display: block;
+      background-color: #8e44ad;
+      color: white;
+      text-decoration: none;
+      padding: 15px;
+      margin-bottom: 15px;
+      border-radius: 6px;
+      text-align: center;
+      font-size: 1.2em;
+      transition: background-color 0.3s ease;
+    }
+
+    .resources a:hover {
+      background-color: #9b59b6;
+    }
+
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      padding-top: 60px;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.4);
+    }
+
+    .modal-content {
+      background-color: #fefefe;
+      margin: 5% auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%;
+      max-width: 500px;
+      border-radius: 8px;
+    }
+
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .calendar {
+      width: 100%;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <h3>Games & Sports</h3>
+    <ul>
+      <li><a href="#events">Upcoming Sports Events</a></li>
+      <li><a href="#training">Training Schedules</a></li>
+      <li><a href="#teams">Teams & Squads</a></li>
+      <li><a href="#results">Match Results</a></li>
+      <li><a href="#achievements">Achievements & Awards</a></li>
+    </ul>
+  </div>
+
+  <!-- Main Content Area -->
+  <div class="content">
+    <h1>Welcome to the Games & Sports Section!</h1>
+
+    <!-- Upcoming Sports Events Section -->
+    <section id="events">
+      <h2>Upcoming Sports Events</h2>
+      <p>Stay updated on all the exciting sports events happening at Alaskena School. View the schedule and mark your calendars for the next big match!</p>
+      <div class="resources">
+        <a href="#">View Upcoming Events</a>
+        <a href="#">RSVP for Events</a>
+      </div>
+    </section>
+
+    <!-- Training Schedules Section -->
+    <section id="training">
+      <h2>Training Schedules</h2>
+      <p>Get access to the detailed training schedules for all sports teams. Know when and where to practice, and ensure you're prepared for your next competition!</p>
+      <div class="resources">
+        <a href="#">View Training Schedule</a>
+        <a href="#">Download Training Timetable</a>
+      </div>
+    </section>
+
+    <!-- Teams & Squads Section -->
+    <section id="teams">
+      <h2>Teams & Squads</h2>
+      <p>Find information about the different sports teams at Alaskena School. Check the list of athletes in each team and get to know the squad members.</p>
+      <div class="resources">
+        <a href="#">View Teams</a>
+        <a href="#">Join a Team</a>
+      </div>
+    </section>
+
+    <!-- Match Results Section -->
+    <section id="results">
+      <h2>Match Results</h2>
+      <p>Stay updated on the results of all recent sports matches and competitions. See how our teams performed and celebrate the victories!</p>
+      <div class="resources">
+        <a href="#">View Latest Match Results</a>
+        <a href="#">Download Results</a>
+      </div>
+    </section>
+
+    <!-- Achievements & Awards Section -->
+    <section id="achievements">
+      <h2>Achievements & Awards</h2>
+      <p>Learn about the sports achievements and awards earned by our students and teams. Celebrate the successes and recognize outstanding athletes.</p>
+      <div class="resources">
+        <a href="#">View Achievements</a>
+        <a href="#">Nominate Athletes for Awards</a>
+      </div>
+    </section>
+
+    <!-- Modal for submitting match results (Optional) -->
+    <div id="submitResultsModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Submit Match Results</h2>
+        <form id="resultsForm">
+          <textarea id="resultsContent" rows="4" cols="50" placeholder="Enter match results details here..." required></textarea><br>
+          <button type="submit">Submit Results</button>
+        </form>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 Alaskena School | Sportsmanship and Team Spirit in Every Game</p>
+  </footer>
+
+  <!-- JS for Modal -->
+  <script>
+    // Open submit match results modal
+    const submitResultsBtn = document.getElementById("submitResultsBtn");
+    const submitResultsModal = document.getElementById("submitResultsModal");
+    const closeModal = document.querySelector(".close");
+
+    submitResultsBtn.addEventListener("click", () => {
+      submitResultsModal.style.display = "block";
+    });
+
+    closeModal.addEventListener("click", () => {
+      submitResultsModal.style.display = "none";
+    });
+
+    window.addEventListener("click", (event) => {
+      if (event.target === submitResultsModal) {
+        submitResultsModal.style.display = "none";
+      }
+    });
+
+    // Handle form submission for match results
+    const resultsForm = document.getElementById("resultsForm");
+
+    resultsForm.addEventListener("submit", (event) => {
+      event.preventDefault(); // Prevent form from refreshing the page
+      const resultsContent = document.getElementById("resultsContent").value;
+
+      // For now, just show an alert (in real use, you'd send this to your server)
+      alert("Match results submitted: " + resultsContent);
+      submitResultsModal.style.display = "none";
+    });
+  </script>
+
+</body>
+</html>

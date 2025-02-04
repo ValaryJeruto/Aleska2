@@ -1,0 +1,145 @@
+<form action="staff_register.php" method="POST">
+    <div class="form-section">
+        <h3>Staff Registration</h3>
+        <style>
+            body {
+                font-family: 'Arial', sans-serif;
+                margin: 0;
+                padding: 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                background-color: #f4f4f4; /* Keep a light neutral background */
+            }
+            .container {
+                width: 100%;
+                max-width: 400px; /* Set a max width for a smaller form */
+                margin: 0 auto;
+                padding: 20px;
+                background-color: white; /* White background for the form */
+                border-radius: 10px; /* Rounded corners */
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            }
+            h3 {
+                text-align: center;
+                color: #333;
+                font-size: 22px;
+                margin-bottom: 20px;
+            }
+            form {
+                display: flex;
+                flex-direction: column;
+                gap: 12px;
+            }
+            input, select, button {
+                padding: 10px;
+                font-size: 14px;
+                border-radius: 8px;
+                border: 1px solid #ddd;
+                width: 100%;
+                box-sizing: border-box;
+            }
+            input:focus, select:focus {
+                border-color: #4CAF50;
+                background-color: rgba(255, 255, 255, 1);
+            }
+            button {
+                background-color: #4CAF50;
+                color: white;
+                border: none;
+                cursor: pointer;
+                border-radius: 8px;
+                transition: background-color 0.3s;
+            }
+            button:hover {
+                background-color: #45a049;
+            }
+            label {
+                font-weight: bold;
+                color: #333;
+                text-align: center;
+                display: block;
+                margin-bottom: 8px;
+            }
+            .avatar-container {
+                display: flex;
+                justify-content: center;
+                margin-bottom: 20px;
+                cursor: pointer;
+            }
+            .avatar-container img {
+                border-radius: 50%;
+                width: 80px;
+                height: 80px;
+                object-fit: cover;
+                border: 3px solid #4CAF50;
+            }
+            .form-section h4 {
+                font-size: 14px;
+                text-align: center;
+                color: #666;
+            }
+            input[type="file"] {
+                display: none; /* Hide the file input */
+            }
+            @media (max-width: 768px) {
+                .container {
+                    padding: 20px;
+                    max-width: 90%; /* Allows the form to take up more space on smaller screens */
+                }
+                h3 {
+                    font-size: 20px;
+                }
+            }
+        </style>
+
+        <!-- Avatar with clickable feature -->
+        <div class="avatar-container">
+            <label for="avatar-upload">
+                <img src="t-avatar.png" id="avatar-img" alt="Avatar" />
+            </label>
+            <input type="file" id="avatar-upload" name="avatar" accept="image/*" onchange="previewAvatar(event)" />
+        </div>
+        <h4>Upload your profile picture (optional)</h4>
+
+        <label for="teacher_id">Teacher ID:</label>
+        <input type="text" id="teacher_id" name="teacher_id" required>
+
+        <label for="user_id">User ID:</label>
+        <input type="text" id="user_id" name="user_id" required>
+
+        <label for="full_name_staff">Full Name:</label>
+        <input type="text" id="full_name_staff" name="full_name_staff" required>
+
+        <label for="subject">Subject:</label>
+        <input type="text" id="subject" name="subject" required>
+
+        <label for="phone">Phone Number:</label>
+        <input type="text" id="phone" name="phone" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="hire_date">Hire Date:</label>
+        <input type="date" id="hire_date" name="hire_date" required>
+
+        <button type="submit" name="register_staff">Register Staff</button>
+    </div>
+</form>
+
+<script>
+    function previewAvatar(event) {
+        const avatar = document.getElementById("avatar-img");
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                avatar.src = e.target.result; // Change the avatar to the uploaded image
+            };
+            reader.readAsDataURL(file);
+        }
+    }
+</script>
+</body>
+</html>
