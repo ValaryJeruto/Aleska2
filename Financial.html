@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alaskena School - Financial Information</title>
+  <style>
+    /* Add previous CSS here */
+
+    .resources a {
+      display: block;
+      background-color: #3498db;
+      color: white;
+      text-decoration: none;
+      padding: 15px;
+      margin-bottom: 15px;
+      border-radius: 6px;
+      text-align: center;
+      font-size: 1.2em;
+      transition: background-color 0.3s ease;
+    }
+
+    .resources a:hover {
+      background-color: #2980b9;
+    }
+
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      padding-top: 60px;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.4);
+    }
+
+    .modal-content {
+      background-color: #fefefe;
+      margin: 5% auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%;
+      max-width: 500px;
+      border-radius: 8px;
+    }
+
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .calendar {
+      width: 100%;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <h3>Financial Resources</h3>
+    <ul>
+      <li><a href="#tuition-fees">Tuition Fees</a></li>
+      <li><a href="#scholarships">Scholarships</a></li>
+      <li><a href="#payment-options">Payment Options</a></li>
+      <li><a href="#financial-aid">Financial Aid</a></li>
+    </ul>
+  </div>
+
+  <!-- Main Content Area -->
+  <div class="content">
+    <h1>Welcome to the Financial Information Section!</h1>
+
+    <!-- Tuition Fees Section -->
+    <section id="tuition-fees">
+      <h2>Tuition Fees</h2>
+      <p>Find detailed information on tuition fees for various grade levels. Understand the breakdown of fees, including materials, activities, and more.</p>
+      <div class="resources">
+        <a href="#">View Tuition Fees</a>
+        <a href="#">Download Tuition Fee Schedule</a>
+      </div>
+    </section>
+
+    <!-- Scholarships Section -->
+    <section id="scholarships">
+      <h2>Scholarships</h2>
+      <p>Explore scholarship opportunities available to eligible students. Apply for academic and merit-based scholarships.</p>
+      <div class="resources">
+        <a href="#">View Available Scholarships</a>
+        <a href="#">Apply for Scholarships</a>
+      </div>
+    </section>
+
+    <!-- Payment Options Section -->
+    <section id="payment-options">
+      <h2>Payment Options</h2>
+      <p>Learn about the different payment methods accepted by Alaskena School, including online payments, bank transfers, and more.</p>
+      <div class="resources">
+        <a href="#">View Payment Methods</a>
+        <a href="#">Make a Payment</a>
+      </div>
+    </section>
+
+    <!-- Financial Aid Section -->
+    <section id="financial-aid">
+      <h2>Financial Aid</h2>
+      <p>Find out more about financial aid programs designed to assist families in need. Learn how to apply and what documents are required.</p>
+      <div class="resources">
+        <a href="#">View Financial Aid Information</a>
+        <a href="#">Apply for Financial Aid</a>
+      </div>
+    </section>
+
+    <!-- Modal for submitting financial documents (Optional) -->
+    <div id="submitFinancialDocumentModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Submit Financial Document</h2>
+        <form id="financialForm">
+          <textarea id="financialDocumentContent" rows="4" cols="50" placeholder="Enter financial document details here..." required></textarea><br>
+          <button type="submit">Submit Document</button>
+        </form>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 Alaskena School | Empowering Learners for a Brighter Future</p>
+  </footer>
+
+  <!-- JS for Modal -->
+  <script>
+    // Open submit financial document modal
+    const submitFinancialDocumentBtn = document.getElementById("submitFinancialDocumentBtn");
+    const submitFinancialDocumentModal = document.getElementById("submitFinancialDocumentModal");
+    const closeModal = document.querySelector(".close");
+
+    submitFinancialDocumentBtn.addEventListener("click", () => {
+      submitFinancialDocumentModal.style.display = "block";
+    });
+
+    closeModal.addEventListener("click", () => {
+      submitFinancialDocumentModal.style.display = "none";
+    });
+
+    window.addEventListener("click", (event) => {
+      if (event.target === submitFinancialDocumentModal) {
+        submitFinancialDocumentModal.style.display = "none";
+      }
+    });
+
+    // Handle form submission for financial documents
+    const financialForm = document.getElementById("financialForm");
+
+    financialForm.addEventListener("submit", (event) => {
+      event.preventDefault(); // Prevent form from refreshing the page
+      const financialDocumentContent = document.getElementById("financialDocumentContent").value;
+
+      // For now, just show an alert (in real use, you'd send this to your server)
+      alert("Your financial document has been submitted: " + financialDocumentContent);
+      submitFinancialDocumentModal.style.display = "none";
+    });
+  </script>
+
+</body>
+</html>

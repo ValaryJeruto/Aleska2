@@ -5,72 +5,99 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Alaskena School</title>
   <style>
+    /* General Styles */
     body {
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
       line-height: 1.6;
-      background-color: #f9f9f9;
+      background-image: url('Aleska3.jpeg'); /* Add your background image here */
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      color: white;  /* Ensure text is white for readability */
+      position: relative; /* Ensure the body has a stacking context for z-index */
     }
+
+    /* Header */
     header {
-  background-color: #4CAF50;
-  color: white;
-  padding: 20px;
-  text-align: center;
-  margin-top: 60px; /* Add this line to push the header down */
-}
+      position: fixed; /* Keep the header fixed in place */
+      top: 20; /* Adjust this value to place it at the top */
+      left: 0;
+      width: 100%;
+      color: rgb(255, 255, 255); /* Text color remains white */
+      padding: 20px;
+      text-align: center;
+      z-index: 2000; /* Ensure header is on top */
+      background: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+    }
 
+    header h1 {
+      font-size: 3em;
+      margin: 0;
+    }
+
+    header p {
+      font-size: 1.2em;
+      margin: 5px 0 0;
+    }
+
+    /* Add padding to content below header to prevent overlap */
+    .content {
+      margin-top: 180px; /* Adjust this value to ensure content doesn't hide behind the header */
+      margin-left: 260px;
+      padding: 20px;
+    }
+
+    /* Navigation Bar */
     nav {
-  background-color:blue;
-  overflow: hidden;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  text-align: center;
-}
+      background: rgba(0, 0, 0, 0.7); /* Semi-transparent black background */
+      overflow: hidden;
+      position: sticky;
+      top: 0;
+      z-index: 3000; /* Ensure navbar is on top of marquee and sidebar */
+      text-align: center;
+    }
 
-nav a {
-  display: inline-block;  /* Ensures they appear on a single line */
-  color: white;
-  text-align: center;
-  padding: 14px 20px;
-  text-decoration: none;
-  transition: background 0.3s ease;
-  white-space: nowrap;  /* Prevents text from wrapping */
-}
-
-nav a:hover {
-  background-color: #ddd;
-  color: black;
-}
-
-/* Make the dropdown items inline as well */
-nav .dropdown {
-  display: inline-block;
-}
+    nav a {
+      display: inline-block;
+      color: white;
+      text-align: center;
+      padding: 14px 20px;
+      text-decoration: none;
+      transition: background 0.3s ease;
+      white-space: nowrap;
+    }
 
     nav a:hover {
       background-color: #ddd;
       color: black;
     }
 
+    nav .dropdown {
+      display: inline-block;
+    }
+
+    /* Sidebar */
     .sidebar {
       width: 250px;
       height: 100%;
       position: fixed;
       top: 0;
       left: 0;
-      background-color: #2c3e50;
+      background: rgba(0, 0, 0, 0.7); /* Semi-transparent black background for sidebar */
       color: white;
       padding-top: 20px;
       display: block;
-      z-index: 999;
+      z-index: 4000; /* Higher z-index to ensure it stays above marquee */
     }
+
     .sidebar h3 {
       text-align: center;
       color: #fff;
       font-size: 20px;
     }
+
     .sidebar a {
       display: block;
       color: white;
@@ -80,58 +107,84 @@ nav .dropdown {
       text-align: center;
       transition: background-color 0.3s ease;
     }
+
     .sidebar a:hover {
       background-color: #4CAF50;
     }
+
     .sidebar ul {
       list-style-type: none;
       padding: 0;
     }
 
-    /* Add space for the content to be beside the sidebar */
-    .content {
-      margin-left: 260px;
-      padding: 20px;
+    /* Marquee Section */
+    .marquee {
+      background: none; /* Remove background */
+      padding: 10px 0;
+      overflow: hidden;
+      position: fixed; /* Fixed position at the top */
+      top: 100;
+      left: 0;
+      right: 0;
+      z-index: 100; /* Lower z-index to place behind everything */
+      display: flex;
+      justify-content: center;
+      pointer-events: none; /* Prevent any interactions with the marquee */
     }
 
-    .marquee {
-      background-color: #f4f4f4;
-      padding: 20px 0;
-      overflow: hidden;
-      position: relative;
-      border-bottom: 2px solid #ddd;
-    }
     .marquee-container {
       display: flex;
       gap: 30px;
       animation: scroll 20s linear infinite;
     }
+
     .marquee img {
       height: 180px;
       width: auto;
       border-radius: 10px;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
     }
+
     @keyframes scroll {
       0% { transform: translateX(100%); }
       100% { transform: translateX(-100%); }
     }
+
+    /* Main Content Section */
     section {
       padding: 20px;
-      background: white;
       margin: 20px;
       border-radius: 8px;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      background: rgb(196, 228, 255); /* Remove background */
     }
+
+    section h2 {
+      font-size: 2em;
+      color: #2980b9;
+      margin-bottom: 15px;
+    }
+
+    section p {
+      font-size: 1.1em;
+      color: #555;
+      line-height: 1.8;
+    }
+
+    /* Footer */
     footer {
       text-align: center;
       padding: 10px;
-      background: #333;
+      background: rgba(0, 0, 0, 0.7); /* Semi-transparent footer */
       color: white;
       margin-top: 20px;
     }
 
-    /* Responsive styles */
+    footer p {
+      margin: 0;
+    }
+
+    /* Responsive Styles */
     @media screen and (max-width: 768px) {
       .sidebar {
         position: absolute;
@@ -141,13 +194,16 @@ nav .dropdown {
         top: 0;
         transition: 0.3s;
       }
+
       .sidebar a {
         text-align: left;
         padding-left: 20px;
       }
+
       .sidebar.open {
         left: 0;
       }
+
       .content {
         margin-left: 0;
       }
@@ -163,18 +219,16 @@ nav .dropdown {
     <a href="gallery.html">Gallery</a>
     <a href="contact.html">Contact</a>
     <a href="staff.html">Staff</a>
-    
-    <!-- Enroll Dropdown -->
-  <!-- Enroll Dropdown -->
-  <div class="dropdown">
-    <a href="#" class="dropbtn">Get Started</a>
-    <div class="dropdown-content">
-      <a href="pupil_registration.html">Enroll Learner</a>
-      <a href="staff_registration.html">Enroll Staff</a>
+    <div class="dropdown">
+      <a href="#" class="dropbtn">Get Started</a>
+      <div class="dropdown-content">
+        <a href="pupil_registration.html">Enroll Learner</a>
+        <a href="staff_registration.html">Enroll Staff</a>
+      </div>
     </div>
-  </div>
+  </nav>
 
-
+  <!-- Header -->
   <header>
     <h1>Welcome to Alaskena School</h1>
     <p>Education for Excellence and Empowerment</p>
@@ -192,28 +246,28 @@ nav .dropdown {
       <li><a href="learners.html">Learners</a></li>
     </ul>
   </div>
-  
+
+  <!-- Marquee Section (Fixed at the top of the page) -->
+  <div class="marquee">
+    <div class="marquee-container">
+      <img src="Aleska1.jpeg" alt="Snapshot of pupils">
+      <img src="Aleska3.jpeg" alt="Classroom View">
+      <img src="Aleska9.jpeg" alt="Games Moments">
+      <img src="Aleska7.jpeg" alt="Cool sunshine">
+      <img src="Aleska8.jpeg" alt="Cool sunshine">
+      <img src="Aleska10.jpeg" alt="Cool sunshine">
+      <img src="Aleska5.jpeg" alt="Cool sunshine">
+    </div>
+  </div>
+
   <!-- Main Content Section -->
   <div class="content">
-    <!-- Marquee Section -->
-    <div class="marquee">
-      <div class="marquee-container">
-        <img src="Aleska1.jpeg" alt="Snapshot of pupils">
-        <img src="Aleska3.jpeg" alt="Classroom View">
-        <img src="Aleska9.jpeg" alt="Games Moments">
-        <img src="Aleska7.jpeg" alt="Cool sunshine">
-        <img src="Aleska8.jpeg" alt="Cool sunshine">
-        <img src="Aleska10.jpeg" alt="Cool sunshine">
-        <img src="Aleska5.jpeg" alt="Cool sunshine">
-      </div>
-    </div>
-    
     <section>
       <h2>Welcome to Alaskena School</h2>
       <p>At Alaskena, we strive to provide quality education and empower the next generation of leaders. Explore our website to learn more about our programs and community.</p>
     </section>
   </div>
-  
+
   <!-- Footer -->
   <footer>
     <p>© 2025 Alaskena School | Designed with ❤️ for the community</p>
